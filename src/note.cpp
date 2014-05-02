@@ -341,7 +341,7 @@ void Note::setSelected(bool selected)
         return;
 
     if (!selected && basket()->editedNote() == this) {
-        basket()->closeEditor();
+        //basket()->closeEditor();
 	return; // To avoid a bug that would count 2 less selected notes instead of 1 less! Because m_selected is modified only below.
     }
 
@@ -400,6 +400,7 @@ void Note::selectIn(const QRectF &rect, bool invertSelection, bool unselectOther
         else if (intersects xor m_wasInLastSelectionRect)
             toSelect = !isSelected();// xor intersects;
     }
+
     setSelected(toSelect);
     m_wasInLastSelectionRect = intersects;
 

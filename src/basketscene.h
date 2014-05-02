@@ -545,7 +545,7 @@ private:
 public slots:
     void placeEditor(bool andEnsureVisible = false);
     void placeEditorAndEnsureVisible();
-    bool closeEditor();
+    bool closeEditor(bool deleteEmptyNote = true);
     void closeEditorDelayed();
     void updateEditorAppearance();
     void editorPropertiesChanged();
