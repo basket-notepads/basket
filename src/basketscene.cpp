@@ -52,6 +52,7 @@
 #include <QtGui/QClipboard>
 #include <QtGui/QInputDialog>
 #include <QtGui/QGraphicsProxyWidget>
+#include <QtGui/QScrollBar>
 #include <QtXml/QDomDocument>
 
 #include <KDE/KTextEdit>
@@ -1314,12 +1315,13 @@ void BasketScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
         return;
     }
-    
+
     // if we are editing and no control key are pressed
     if( m_editor && !shiftPressed && !controlPressed )
     {
 	//if the mouse is over the editor
-	QGraphicsWidget *widget = dynamic_cast<QGraphicsWidget*>(m_view->itemAt(event->scenePos().toPoint()));
+    QPointF view_shift(m_view->horizontalScrollBar()->value(), m_view->verticalScrollBar()->value());
+    QGraphicsWidget *widget = dynamic_cast<QGraphicsWidget*>(m_view->itemAt((event->scenePos() - view_shift).toPoint()));
 	if(widget && m_editor->graphicsWidget() == widget)
 	{
 	    if(event->button() == Qt::LeftButton)
