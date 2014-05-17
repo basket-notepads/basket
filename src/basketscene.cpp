@@ -1821,6 +1821,8 @@ void BasketScene::dropEvent(QGraphicsSceneDragDropEvent *event)
     // Then noteAt() is called for the mouse pointer position, because the basket is now smaller, the cursor is out of boundaries!!!
     // Should, of course, not return 0:
     Note *clicked = noteAt(pos);
+    if(clicked && clicked->allSelected())
+        clicked = 0;
 
     if (NoteFactory::movingNotesInTheSameBasket(event->mimeData(), this, event->dropAction()) && event->dropAction() == Qt::MoveAction) {
         m_doNotCloseEditor = true;
