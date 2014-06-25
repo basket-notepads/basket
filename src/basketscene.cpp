@@ -4691,10 +4691,12 @@ Note* BasketScene::lastNoteShownInStack()
     return last;
 }
 
+/*
+Looks unneeded and MSVC 2010 cannot compile with this function
 inline int abs(int n)
 {
     return (n < 0 ? -n : n);
-}
+}*/
 
 Note* BasketScene::noteOn(NoteOn side)
 {
