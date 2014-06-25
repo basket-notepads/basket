@@ -397,7 +397,7 @@ void Note::selectIn(const QRectF &rect, bool invertSelection, bool unselectOther
     if (invertSelection) {
         if (m_wasInLastSelectionRect == intersects)
             toSelect = isSelected();
-        else if (intersects xor m_wasInLastSelectionRect)
+        else if (intersects ^ m_wasInLastSelectionRect)
             toSelect = !isSelected();// xor intersects;
     }
     setSelected(toSelect);
@@ -765,8 +765,10 @@ Note::Zone Note::zoneAt(const QPointF &pos, bool toAdd)
         return Link;
 
     qreal customZone = content()->zoneAt(pos - QPointF(contentX(), NOTE_MARGIN));
+/*  Commented because compiling fails with MSVC 2010 due to a strange casting problem
     if (customZone)
         return (Note::Zone)customZone;
+ */
 
     return Content;
 }

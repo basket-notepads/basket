@@ -180,8 +180,11 @@ void BNPView::lateInit()
             if (Global::mainWindow()) Global::mainWindow()->setShown(!Settings::startDocked());
         }
     }
+/*
+Commented because compiling fails with MSVC 2010 due to the invalid preprocessor #warning
 #else
     #warning Proper fix for the systray problem
+*/
 #endif
 
 
