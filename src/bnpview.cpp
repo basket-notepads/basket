@@ -23,6 +23,7 @@
 #include <QtCore/QList>
 #include <QtCore/QRegExp>
 #include <QtCore/QEvent>
+#include <QtCore/QThread>
 #include <QtGui/QStackedWidget>
 #include <QtGui/QPixmap>
 #include <QtGui/QImage>
@@ -61,7 +62,6 @@
 #endif //BASKET_USE_DRKONQI
 
 #include <cstdlib>
-#include <unistd.h> // usleep
 
 #include "basketscene.h"
 #include "decoratedbasket.h"
@@ -2065,7 +2065,8 @@ void BNPView::grabScreenshot(bool global)
     hideMainWindow();
 
     currentBasket()->saveInsertionData();
-    usleep(delay * 1000);
+
+    QThread::usleep(delay * 1000);
     m_regionGrabber = new RegionGrabber;
     connect(m_regionGrabber, SIGNAL(regionGrabbed(const QPixmap&)), this, SLOT(screenshotGrabbed(const QPixmap&)));
 }
