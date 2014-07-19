@@ -1503,11 +1503,7 @@ void BasketScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if (event->button() == Qt::RightButton && clicked && !clicked->isColumn() && zone != Note::Resizer) {
         if (!clicked->allSelected())
             unselectAllBut(clicked);
-        setFocusedNote(clicked); /// /// ///
-        if (editedNote() == clicked) {
-            closeEditor();
-            clicked->setSelected(true);
-        }
+        setFocusedNote(clicked);
         m_startOfShiftSelectionNote = (clicked->isGroup() ? clicked->firstRealChild() : clicked);
         KMenu* menu = Global::bnpView->popupMenu("note_popup");
         connect(menu, SIGNAL(aboutToHide()),  this, SLOT(unlockHovering()));
