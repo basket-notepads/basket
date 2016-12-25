@@ -28,6 +28,7 @@
 
 #include <QtCore/QDir>
 #include <QtCore/QTextStream>
+#include <QtCore/QThread>
 #include <QtGui/QLayout>
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
@@ -46,9 +47,6 @@
 #include <KDE/KProgressDialog>
 #include <KDE/KMessageBox>
 #include <KDE/KVBox>
-
-#include <unistd.h> // usleep()
-
 
 /**
  * Backups are wrapped in a .tar.gz, inside that folder name.
@@ -235,7 +233,7 @@ void BackupDialog::backup()
     while (thread.isRunning()) {
         progress->setValue(progress->value() + 1); // Or else, the animation is not played!
         kapp->processEvents();
-        usleep(300); // Not too long because if the backup process is finished, we wait for nothing
+        QThread::usleep(300); // Then sleep, but not too long because if the backup process is finished, we wait for nothing
     }
 
     Settings::setLastBackup(QDate::currentDate());
@@ -294,7 +292,7 @@ void BackupDialog::restore()
     while (thread.isRunning()) {
         progress->setValue(progress->value() + 1); // Or else, the animation is not played!
         kapp->processEvents();
-        usleep(300); // Not too long because if the restore process is finished, we wait for nothing
+        QThread::usleep(300); // Then sleep, but not too long because if the backup process is finished, we wait for nothing
     }
 
     dialog->hide(); // The restore is finished, do not continue to show it while telling the user the application is going to be restarted
