@@ -45,7 +45,7 @@ QmlBasketScene::QmlBasketScene(QWidget* parent) :
     rootContext->setContextProperty("cBasket", cBasket);
     rootContext->setContextProperty("cNoteProperties", cNoteProperties);
     rootContext->setContextProperty("cModel", cModel);
-    m_quickWidget.setSource(QUrl::fromLocalFile(QML_DIR "/basketscene.qml"));
+    m_quickWidget.setSource(QUrl::fromLocalFile(":/basketscene.qml"));
 
     m_quickWidget.m_parentScrollArea = &m_scrollArea;
     m_scrollArea.setWidget(&m_quickWidget);

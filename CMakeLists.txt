@@ -36,6 +36,8 @@ find_package(Qt5 REQUIRED COMPONENTS
   DBus
   Gui
   Widgets
+  Quick
+  QuickWidgets
   Xml
 )
 

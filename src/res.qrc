@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="basketscene.qml">qml/basketscene.qml</file>
+    </qresource>
+</RCC>
+

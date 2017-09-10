@@ -50,6 +50,11 @@ set(basketcommon_LIB_SRCS
     tools.cpp
     variouswidgets.cpp
     xmlwork.cpp
+    qmlbasketscene.cpp
+)
+
+QT5_ADD_RESOURCES(basketcommon_LIB_SRCS
+   res.qrc
 )
 
 set(PIMO_CPP "") # One of the generated files
@@ -70,6 +75,8 @@ add_library(basketcommon SHARED ${basketcommon_LIB_SRCS} ${basket_FORM_HDRS} ${b
 target_link_libraries(basketcommon
   ${PHONON_LIBRARY}
   ${GPGME_VANILLA_LIBRARIES}
+  Qt5::Quick
+  Qt5::QuickWidgets
   KF5::Archive
   KF5::ConfigWidgets
   KF5::CoreAddons
