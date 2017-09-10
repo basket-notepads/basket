@@ -24,11 +24,13 @@
 #include <QList>
 #include <QDrag>
 #include <QGraphicsSceneDragDropEvent>
+#include <QQuickItemGrabResult>
 
 class QDataStream;
 class QDragEnterEvent;
 class QPixmap;
 class QString;
+class QQuickItem;
 
 class BasketScene;
 class Note;
@@ -88,5 +90,16 @@ public:
     static bool decode(const QMimeData *e, QString &str);
     static bool decode(const QMimeData *e, QString &str, QString &subtype);
 };
+
+
+class QmlNoteDrag : public QObject
+{
+    Q_OBJECT
+
+public:
+    Q_INVOKABLE Qt::DropAction dragObject(QQuickItem* item, QString serializedNote, QQuickItemGrabResult* image);
+
+};
+
 
 #endif // NOTEDRAG_H

@@ -37,6 +37,9 @@ DecoratedBasket::DecoratedBasket(QWidget *parent, const QString &folderName, Qt:
     m_basket = new BasketScene(this, folderName);
     m_basket->graphicsView()->setParent(this);
     m_layout->addWidget(m_basket->graphicsView());
+    m_qmlBasket = new QmlBasketScene(this);
+    m_qmlBasket->scrollArea()->setParent(this);
+    m_layout->addWidget(m_qmlBasket->scrollArea());
     setFilterBarPosition(Settings::filterOnTop());
 
     m_filter->hide();

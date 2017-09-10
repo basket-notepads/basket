@@ -40,6 +40,12 @@
 #include "tools.h"
 #include "global.h"
 
+#include <QQuickItem>
+
+
+#include "qmlquickwidget.h"
+#include <QScrollArea>
+
 /** NoteDrag */
 
 const char * NoteDrag::NOTE_MIME_STRING = "application/x-basket-note";
@@ -605,3 +611,18 @@ bool ExtendedTextDrag::decode(const QMimeData *e, QString &str, QString &subtype
     return ok;
 }
 
+
+Qt::DropAction QmlNoteDrag::dragObject(QQuickItem* item, QString serializedNote, QQuickItemGrabResult* image)
+{
+    QDrag* drag = new QDrag(item);
+    /*drag->setParent(NULL);*/
+    QMimeData* mimeData = new QMimeData();
+    mimeData->setText(serializedNote);
+    drag->setMimeData(mimeData);
+    if (image->image().height() > qApp->desktop()->height() / 2) {
+        //TODO-quick: crop image, render elipsisImage
+    }
+    drag->setPixmap(QPixmap::fromImage(image->image()));
+    return drag->exec(Qt::MoveAction);
+    //TODO: serialize notes (remake NoteDrag::dragObject)
+}

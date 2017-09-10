@@ -29,6 +29,7 @@ class QGraphicsView;
 #include <QWidget>
 
 #include "filter.h"
+#include "qmlbasketscene.h"
 
 /** This class handle Basket and add a FilterWidget on top of it.
   * @author Sébastien Laoût
@@ -61,5 +62,6 @@ private:
     QVBoxLayout *m_layout;
     FilterBar   *m_filter;
     BasketScene  *m_basket;
+    QmlBasketScene* m_qmlBasket;
 };
 #endif // DECORATEDBASKET_H
