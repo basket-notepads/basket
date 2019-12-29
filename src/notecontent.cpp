@@ -594,10 +594,12 @@ bool TextContent::match(const FilterData &data)
 {
     return text().contains(data.string);
 }
+
 bool HtmlContent::match(const FilterData &data)
 {
-    return m_textEquivalent/*toText("")*/.contains(data.string);
+    return m_textEquivalent/*toText("")*/.contains(data.string, Qt::CaseInsensitive);
 } //OPTIM_FILTER
+
 bool ImageContent::match(const FilterData &/*data*/)
 {
     return false;
