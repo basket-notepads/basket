@@ -46,17 +46,18 @@ https://launchpad.net/basket
 
 Building/Installation
 ----------------------
+
 To build and install BasKet, follow these steps (this assumes you have the relevant
 kde4 development libraries and CMake):
 
-----
+```bash
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` -DKDE_INSTALL_QTPLUGINDIR=`qtpaths --plugin-dir` ..
 make
 # make install
-----
+```
 
 Or you can try your luck with the installer script:
 
-  ./installer
+ `./installer`
