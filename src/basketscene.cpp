@@ -1087,9 +1087,10 @@ void BasketScene::newFilter(const FilterData &data, bool andEnsureVisible/* = tr
     m_countFounds = 0;
 
     //Search within basket titles as well
-    if (data.tagFilterType == FilterData::DontCareTagsFilter)
-    if (!data.string.isEmpty())
-    if (basketName().contains(data.string, Qt::CaseInsensitive)){
+    if ((data.tagFilterType == FilterData::DontCareTagsFilter) &&
+        !data.string.isEmpty() &&
+        basketName().contains(data.string, Qt::CaseInsensitive))
+    {
         ++m_countFounds;
     }
 
