@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8.12)
+project(basket LANGUAGES CXX)
 cmake_policy(SET CMP0063 NEW)
 set(BASKET_DISABLE_GPG "0" CACHE BOOL "Disables GPG Support")
 

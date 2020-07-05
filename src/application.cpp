@@ -56,7 +56,9 @@ Application::Application(int &argc, char **argv)
 
 
     #ifdef WITH_LIBGIT2
-        #if LIBGIT2_SOVERSION >= 22
+        #if LIBGIT2_VER_MAJOR >= 1
+            git_libgit2_init();
+        #elif LIBGIT2_VER_MINOR >= 22  // v0.22
             git_libgit2_init();
         #else
             git_threads_init();
@@ -67,7 +69,9 @@ Application::Application(int &argc, char **argv)
 Application::~Application()
 {
     #ifdef WITH_LIBGIT2
-        #if LIBGIT2_SOVERSION >= 22
+        #if LIBGIT2_VER_MAJOR >= 1
+            git_libgit2_shutdown();
+        #elif LIBGIT2_VER_MINOR >= 22  // v0.22
             git_libgit2_shutdown();
         #else
             git_threads_shutdown();
