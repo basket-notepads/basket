@@ -632,7 +632,7 @@ TagsEditDialog::TagsEditDialog(QWidget *parent, State *stateToEdit, bool addNewT
     connect(m_underline,       SIGNAL(toggled(bool)),                      this, SLOT(modified()));
     connect(m_italic,          SIGNAL(toggled(bool)),                      this, SLOT(modified()));
     connect(m_strike,          SIGNAL(toggled(bool)),                      this, SLOT(modified()));
-    connect(m_textColor,       SIGNAL(activated(int)),                     this, SLOT(modified()));
+    connect(m_textColor,       SIGNAL(changed(const QColor&)),             this, SLOT(modified()));
     connect(m_font,            SIGNAL(editTextChanged(const QString&)),    this, SLOT(modified()));
     connect(m_fontSize,        SIGNAL(editTextChanged(const QString&)),    this, SLOT(modified()));
     connect(m_textEquivalent,  SIGNAL(textChanged(const QString&)),        this, SLOT(modified()));
